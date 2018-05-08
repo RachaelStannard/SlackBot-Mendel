@@ -12,10 +12,9 @@ starterbot_id = None
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
 EXAMPLE_COMMAND = "Hello"
-DUCKBOT_COMMAND = "Duckbot"
+#DUCKBOT_COMMAND = "Duckbot"
 FACTOID_COMMAND = "Factoid"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
-
 
 def parse_bot_commands(slack_events):
     """
@@ -44,25 +43,26 @@ def handle_command(command, channel):
         Executes bot command if the command is known
     """
     # Default response is help text for the user
-    default_response = "I'm just a :seedling:! Say *{}*.".format(EXAMPLE_COMMAND)
+    #default_response = "I'm just a :seedling:! Say *{}*.".format(EXAMPLE_COMMAND)
 
     # Finds and executes the given command, filling in response
     response = None
     # This is where you start to implement more commands!
     if command.startswith(EXAMPLE_COMMAND):
         response = "Aloe from the other side~!"
-
-    if command.startswith(DUCKBOT_COMMAND):
-        response = "@Duckbot Party Thyme~!"
-        
-    if command.startswith(FACTOID_COMMAND):
+    #elif command.startswith(DUCKBOT_COMMAND):
+    #    response = "@Duckbot Party Thyme~!"
+    elif command.startswith(FACTOID_COMMAND):
         response = "Facts soon, now leaf me be~ :evergreen_tree:"
-       
+    else
+        # Default response is help text for the user
+        response = "I'm just a :seedling:! Say *{}*.".format(EXAMPLE_COMMAND)
+   
     # Sends the response back to the channel
     slack_client.api_call(
         "chat.postMessage",
         channel=channel,
-        text=response or default_response
+        text=response
     )
 
 
