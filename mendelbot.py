@@ -12,7 +12,7 @@ starterbot_id = None
 # constants
 RTM_READ_DELAY = 1 # 1 second delay between reading from RTM
 EXAMPLE_COMMAND = "Hello"
-#DUCKBOT_COMMAND = "Duckbot"
+DUCKBOT_COMMAND = "Duckbot"
 FACTOID_COMMAND = "Factoid"
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
 
@@ -50,11 +50,11 @@ def handle_command(command, channel):
     # This is where you start to implement more commands!
     if command.startswith(EXAMPLE_COMMAND):
         response = "Aloe from the other side~!"
-    #elif command.startswith(DUCKBOT_COMMAND):
-    #    response = "@Duckbot Party Thyme~!"
+    elif command.startswith(DUCKBOT_COMMAND):
+        response = "@Duckbot Party Thyme~!"
     elif command.startswith(FACTOID_COMMAND):
         response = "Facts soon, now leaf me be~ :evergreen_tree:"
-    else
+    else:
         # Default response is help text for the user
         response = "I'm just a :seedling:! Say *{}*.".format(EXAMPLE_COMMAND)
    
